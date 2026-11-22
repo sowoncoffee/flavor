@@ -30,7 +30,7 @@ input:first-child,h2+input{margin-top:0}
 textarea{font-weight:700;resize:vertical;margin-top:0}
 input:focus,textarea:focus{outline:2px solid var(--o);outline-offset:1px}
 .hint{font-size:13px;color:var(--m);margin:10px 0 0}
-.two{display:flex;gap:16px}
+.two{display:flex;gap:10px}
 .seg{flex:1;border:1.5px solid var(--l);background:#fff;border-radius:14px;padding:15px;font:700 17px inherit;font-family:inherit;color:#4a4f5c}
 .seg.on{background:var(--o);border-color:var(--o);color:#fff}
 canvas{display:block;width:100%;max-width:400px;margin:0 auto;border-radius:12px;border:1px solid var(--l)}
@@ -63,7 +63,7 @@ canvas{display:block;width:100%;max-width:400px;margin:0 auto;border-radius:12px
 <h2>고도 (Altitude)</h2>
 <input id="alt" placeholder="1950~2150" inputmode="text">
 <h2>용도 (Usage)</h2>
-<div class="two"><button class="seg on" data-u="Brewing">Brewing</button><button class="seg" data-u="Espresso">Espresso</button></div>
+<div class="two"><button class="seg on" data-u="Brewing">Brewing</button><button class="seg" data-u="Espresso">Espresso</button><button class="seg" data-u="Omni">Omni</button></div>
 <h2>플레이버 (Flavor)</h2>
 <div id="flavors"></div>
 <div class="sub">선택된 플레이버 수정 (SELECTED OUTPUT - EDITABLE)</div>
@@ -96,7 +96,7 @@ const FL={
 Floral:`jasmin,lily,lavender,coffee blossom,osmanthus,passion flower,freesia,cherry blossom,orange blossom,cotton blossom,chamomile,white flower`,
 Acidity:`bright citrus,lemon,lime,pineapple,apricot,peach,pear,fig,red apple,green apple,grape,green grape,shine muscat,grapefruit,pomelo,passionfruit,raspberry,strawberry,wild strawberry,blueberry,black currant,quince,mango,orange,red orange,tangerine,green tangerine,plum,dark plum,cherry,cranberry,tropical,yogurt`,
 Sweetness:`brown sugar,honey,molasses,caramel,maple syrup,milk chocolate,chocolate,dark chocolate,cocoa,acacia,vanilla`,
-Herbal:`Bergamot,Lemongrass,glass,pepper,rooibos,cinnamon,rosemary,verbena,lemon thyme`,
+Herbal:`Bergamot,Lemongrass,glass,pepper,rooibos,cinnamon,rosemary,verbena,lemon thyme,tea rose`,
 Alcohol:`whisky,sherry whiskey,white wine,red wine,white rum`,
 Tea:`Black tea,Red tea,Green tea,White tea,Hibiscus,Darjeeling,Jasmine tea`,
 Nutty:`Almond,Hazelnut,Walnut,Peanut,Cashew,Pecan,Chestnut`,
