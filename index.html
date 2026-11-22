@@ -1,297 +1,235 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F2F4F3">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="风味轮">
-<meta name="description" content="边喝边点，快速找到咖啡风味的风味轮">
-<title>风味轮</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23E8622C'/%3E%3Cpath d='M16 2a14 14 0 0 1 14 14H16z' fill='%23E58AB0'/%3E%3Cpath d='M16 30A14 14 0 0 1 2 16h14z' fill='%236BA34A'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
+<title>소원커피라벨</title>
 <style>
-:root{--bg:#F2F4F3;--card:#FFFFFF;--ink:#1D2321;--mut:#5F6A66;--line:#D3D9D6;--btn-ink:#F2F4F3}
-@media (prefers-color-scheme:dark){:root{--bg:#121614;--card:#1A201D;--ink:#E8ECEA;--mut:#9AA5A0;--line:#2D3632;--btn-ink:#121614}}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "PingFang SC","Microsoft YaHei","Noto Sans SC","Hiragino Sans GB",system-ui,sans-serif;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
-.app{max-width:480px;margin:0 auto;padding:16px 16px 48px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-h1{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.01em}
-.sub{margin:2px 0 0;color:var(--mut);font-size:13px}
-.cup{display:block;width:100%;margin-top:14px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-size:16px}
-.cup::placeholder{color:var(--mut)}
-button{font:inherit;color:inherit;cursor:pointer}
-button:focus-visible,.cup:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex:none}
-.seg button{border:0;background:transparent;padding:7px 12px;font-size:13px;color:var(--mut)}
-.seg button.on{background:var(--ink);color:var(--btn-ink);font-weight:600}
-#wheel{margin:12px 0 4px}
-#wheel svg{display:block;width:100%;height:auto}
-#wheel [data-c]{cursor:pointer}
-.pills{display:flex;flex-wrap:wrap;gap:6px}
-.pill{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:18px;background:transparent;font-size:13px}
-.pill i{width:10px;height:10px;border-radius:3px;display:inline-block}
-.pill.on{border-color:var(--ink);font-weight:600}
-h2{margin:20px 0 6px;font-size:14px;font-weight:600}
-.hint{margin:0;color:var(--mut);font-size:13px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{min-height:40px;padding:0 12px;border:1px solid;border-radius:8px;font-size:14px;background:transparent}
-.chip.on{font-weight:600}
-.chip small{margin-left:6px;font-size:11px;color:var(--mut);font-weight:400}
-.tray{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;min-height:64px}
-.acts{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.act{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:transparent;font-size:14px}
-.act.main{background:var(--ink);color:var(--btn-ink);border-color:var(--ink);font-weight:600}
-.act:disabled{opacity:.4;cursor:default}
-#toast{position:sticky;bottom:12px;margin-top:12px;min-height:20px;text-align:center;font-size:13px;color:var(--mut)}
-@media (prefers-reduced-motion:no-preference){#wheel path{transition:fill-opacity .15s}}
+:root{--o:#c1803d;--d:#7f4a27;--t:#2b2f3a;--m:#8a8f9a;--l:#e4e6ea;--bg:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.4 -apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:28px;padding:calc(22px + env(safe-area-inset-top)) 24px 18px;max-width:600px;margin:auto}
+.logo{background:#2b2522;color:#fff;border-radius:12px;padding:10px 14px;text-align:center;line-height:1}
+.logo b{display:block;font-size:22px;font-weight:600;padding-bottom:6px;border-bottom:1px solid #5a504a}
+.logo i{display:block;font-size:8px;letter-spacing:3px;font-style:normal;margin-top:6px}
+h1{font-size:23px;margin:0;font-weight:800}
+nav{display:flex;border-top:1px solid var(--l);border-bottom:1px solid var(--l);max-width:600px;margin:auto}
+.tab{flex:1;border:0;background:none;padding:16px 0;font:700 16px inherit;font-family:inherit;color:var(--m);border-bottom:3px solid transparent}
+.tab.on{color:var(--d);background:#fdf6ee;border-color:var(--o)}
+main,#list{max-width:600px;margin:auto;padding:8px 24px}
+h2{font-size:19px;margin:30px 0 14px;font-weight:800}
+.sub{font-size:13px;color:var(--m);margin:26px 0 10px;font-weight:700}
+.cat{font-size:14px;color:var(--m);font-weight:700;margin:22px 0 10px;text-transform:uppercase;letter-spacing:.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px 8px}
+.chip{border:1px solid var(--l);background:#fff;border-radius:10px;padding:9px 14px;font:15px inherit;font-family:inherit;color:#4a4f5c}
+.chip.on{background:var(--o);border-color:var(--o);color:#fff}
+input,textarea{width:100%;border:1.5px solid var(--l);border-radius:16px;padding:15px 18px;font:17px inherit;font-family:inherit;color:var(--t);background:#fff;margin-top:14px}
+input:first-child,h2+input{margin-top:0}
+textarea{font-weight:700;resize:vertical;margin-top:0}
+input:focus,textarea:focus{outline:2px solid var(--o);outline-offset:1px}
+.hint{font-size:13px;color:var(--m);margin:10px 0 0}
+.two{display:flex;gap:16px}
+.seg{flex:1;border:1.5px solid var(--l);background:#fff;border-radius:14px;padding:15px;font:700 17px inherit;font-family:inherit;color:#4a4f5c}
+.seg.on{background:var(--o);border-color:var(--o);color:#fff}
+canvas{display:block;width:100%;max-width:400px;margin:0 auto;border-radius:12px;border:1px solid var(--l)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#f7f8fa;border-top:1px solid var(--l);padding:16px 24px calc(16px + env(safe-area-inset-bottom))}
+.bar>div{max-width:600px;margin:auto;display:flex;flex-direction:column;gap:10px}
+.btn{border:0;border-radius:16px;padding:18px;font:800 19px inherit;font-family:inherit}
+.main{background:var(--d);color:#fff}
+.sec{background:#fff;color:var(--d);border:1.5px solid var(--l)}
+.card{display:flex;align-items:center;gap:8px;border:1px solid var(--l);border-radius:14px;padding:14px 16px;margin:12px 0}
+.card div{flex:1;min-width:0}.card b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card small{color:var(--m)}
+.card button{border:1px solid var(--l);background:#fff;border-radius:10px;padding:8px 12px;font:14px inherit;font-family:inherit}
+#toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#2b2522;color:#fff;padding:10px 18px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.show{opacity:1}
 </style>
 </head>
 <body>
-<div class="app">
-<header>
-<div>
-<h1>风味轮</h1>
-<p class="sub">边喝边点，找到你尝到的风味</p>
-</div>
-<div class="seg" role="group" aria-label="语言">
-<button type="button" data-l="zh">中文</button>
-<button type="button" data-l="en">EN</button>
-</div>
-</header>
-<input id="cup" class="cup" type="text" maxlength="40" autocomplete="off">
-<div id="wheel"></div>
-<div class="pills" id="pills"></div>
-<div id="panel"></div>
-<h2 id="th">我选的风味</h2>
-<div class="tray" id="tray"></div>
-<div class="acts">
-<button type="button" class="act main" data-a="copy" id="bcopy">复制文字</button>
-<button type="button" class="act" data-a="img" id="bimg">保存图片</button>
-<button type="button" class="act" data-a="clr" id="bclr">重置</button>
-</div>
-<div id="toast" role="status" aria-live="polite"></div>
-</div>
-<script>
-var RAW=[
-['Floral','花香','#E58AB0','jasmin|茉莉;lily|百合;lavender|薰衣草;coffee blossom|咖啡花;osmanthus|桂花;passion flower|西番莲花;freesia|小苍兰;cherry blossom|樱花;orange blossom|橙花;cotton blossom|棉花花;chamomile|洋甘菊;white flower|白花'],
-['Acidity','酸质','#E8622C','bright citrus|明亮柑橘;lemon|柠檬;lime|青柠;pineapple|菠萝;apricot|杏;peach|桃子;pear|梨;fig|无花果;red apple|红苹果;green apple|青苹果;grape|葡萄;green grape|青提;shine muscat|阳光玫瑰;grapefruit|葡萄柚;pomelo|柚子;passionfruit|百香果;raspberry|覆盆子;strawberry|草莓;wild strawberry|野草莓;blueberry|蓝莓;black currant|黑醋栗;quince|榅桲;mango|芒果;orange|橙子;red orange|红橙;tangerine|橘子;green tangerine|青橘;plum|李子;dark plum|黑李子;cherry|樱桃;cranberry|蔓越莓;tropical|热带水果;yogurt|酸奶'],
-['Sweetness','甜感','#B9772B','brown sugar|红糖;honey|蜂蜜;molasses|糖蜜;caramel|焦糖;maple syrup|枫糖浆;milk chocolate|牛奶巧克力;chocolate|巧克力;dark chocolate|黑巧克力;cocoa|可可;acacia|洋槐蜜;vanilla|香草'],
-['Herbal','草本','#6BA34A','Bergamot|佛手柑;Lemongrass|香茅;glass|玻璃;pepper|胡椒;rooibos|路易波士茶;cinnamon|肉桂;rosemary|迷迭香;verbena|马鞭草;lemon thyme|柠檬百里香'],
-['Alcohol','酒香','#8A2F4D','whisky|威士忌;sherry whiskey|雪莉威士忌;white wine|白葡萄酒;red wine|红葡萄酒;white rum|白朗姆酒'],
-['Tea','茶感','#A87B4F','Black tea|红茶 (Black tea);Red tea|红茶 (Red tea);Green tea|绿茶;White tea|白茶;Hibiscus|洛神花;Darjeeling|大吉岭红茶;Jasmine tea|茉莉花茶'],
-['Nutty','坚果','#8B5E3C','Almond|杏仁;Hazelnut|榛子;Walnut|核桃;Peanut|花生;Cashew|腰果;Pecan|碧根果;Chestnut|栗子'],
-['Texture','口感','#8F8E88','silky|丝滑;milky|奶感;jam|果酱感;syrup|糖浆感;juicy|多汁;candy|糖果感']
-];
-var CATS=RAW.map(function(r){return{n:r[0],z:r[1],c:r[2],t:r[3].split(';').map(function(x){var p=x.split('|');return{e:p[0],z:p[1]};})};});
-var KEY='sowon-flavor-wheel-zh-v1';
-var act=null,sel=[],lang='zh',cup='',timer=null;
-var CX=200,CY=170;
-var FONT='"PingFang SC","Microsoft YaHei","Noto Sans SC",Helvetica,Arial,sans-serif';
+<header><div class="logo"><b>SOWON</b><i>COFFEE</i></div><h1>원두 라벨 편집기</h1></header>
+<nav><button class="tab on" data-t="edit">＋ 라벨 편집</button><button class="tab" data-t="list">저장 목록</button></nav>
 
-function load(){
-try{
-var raw=localStorage.getItem(KEY);
-if(!raw)return;
-var o=JSON.parse(raw);
-if(o.lang==='zh'||o.lang==='en')lang=o.lang;
-if(typeof o.cup==='string')cup=o.cup.slice(0,40);
-if(Array.isArray(o.sel)){
-sel=o.sel.filter(function(k){
-var p=String(k).split(':');
-return p.length===2&&CATS[+p[0]]&&CATS[+p[0]].t[+p[1]];
+<main id="edit">
+<h2>국가 선택 (Country)</h2>
+<div class="chips" data-g="country"></div><input id="country" placeholder="국가 직접 입력 또는 선택된 항목" style="margin-top:18px">
+<h2>제품명 (Name)</h2>
+<input id="name" placeholder="Uraga tome">
+<h2>품종 (Varietal)</h2>
+<div class="chips" data-g="varietal"></div><input id="varietal" placeholder="품종 직접 입력 또는 선택된 항목" style="margin-top:18px">
+<h2>가공 (Processing)</h2>
+<div class="chips" data-g="process"></div><input id="process" placeholder="가공 방식 직접 입력 또는 선택된 항목" style="margin-top:18px">
+<h2>고도 (Altitude)</h2>
+<input id="alt" placeholder="1950~2150" inputmode="text">
+<h2>용도 (Usage)</h2>
+<div class="two"><button class="seg on" data-u="Brewing">Brewing</button><button class="seg" data-u="Espresso">Espresso</button></div>
+<h2>플레이버 (Flavor)</h2>
+<div id="flavors"></div>
+<div class="sub">선택된 플레이버 수정 (SELECTED OUTPUT - EDITABLE)</div>
+<textarea id="flavor" rows="3"></textarea>
+<p class="hint">* 입력창의 컵노트를 직접 지우거나, 쉼표(,)로 구분해 새로운 단어를 추가하여 자유롭게 수정해 보세요. (이미지에도 바로 적용됩니다!)</p>
+<h2>로스팅 날짜 (Roasting Date)</h2>
+<input id="date" type="date">
+<h2>색상 (Color)</h2>
+<input id="color" inputmode="numeric" placeholder="105">
+<h2>미리보기</h2>
+<canvas id="cv"></canvas>
+</main>
+
+<section id="list" hidden></section>
+
+<div class="bar" id="bar"><div>
+<button class="btn main" id="png">이미지 저장 (사진 앱)</button>
+<button class="btn sec" id="keep">저장 목록에 담기</button>
+</div></div>
+<div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const F='-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif';
+const D={
+country:`Colombia,Ethiopia,Brazil,Guatemala,Kenya,Indonesia,Costa Rica,Vietnam,Panama,Honduras,El Salvador,Nicaragua,Peru,Tanzania,Brundi,Rwanda,Kongo (DRC),China,India,Thailand,Laos,Myanmar,Mexico,Uganda`,
+varietal:`Typica,Bourbon,Caturra,Catuai,Catimor,Castillo,Geisha,Pacamara,SL24.28,Heirloom,74158,74110,74112,dere132,Mundo Novo,Maragogype,Pacas,Catu's,Parainema,Sarchimor,Sudan Rume,Blend`,
+process:`Natural,Washed,Honey,Wet-Hulled,Anaerobic Natural,Anaerobic Washed,Carbonic Maceration,Fruit Fermentation,Yeast Fermentation,Infused,EA Decaffein,SW Decaffein`};
+const FL={
+Floral:`jasmin,lily,lavender,coffee blossom,osmanthus,passion flower,freesia,cherry blossom,orange blossom,cotton blossom,chamomile,white flower`,
+Acidity:`bright citrus,lemon,lime,pineapple,apricot,peach,pear,fig,red apple,green apple,grape,green grape,shine muscat,grapefruit,pomelo,passionfruit,raspberry,strawberry,wild strawberry,blueberry,black currant,quince,mango,orange,red orange,tangerine,green tangerine,plum,dark plum,cherry,cranberry,tropical,yogurt`,
+Sweetness:`brown sugar,honey,molasses,caramel,maple syrup,milk chocolate,chocolate,dark chocolate,cocoa,acacia,vanilla`,
+Herbal:`Bergamot,Lemongrass,glass,pepper,rooibos,cinnamon,rosemary,verbena,lemon thyme`,
+Alcohol:`whisky,sherry whiskey,white wine,red wine,white rum`,
+Tea:`Black tea,Red tea,Green tea,White tea,Hibiscus,Darjeeling,Jasmine tea`,
+Nutty:`Almond,Hazelnut,Walnut,Peanut,Cashew,Pecan,Chestnut`,
+Texture:`silky,milky,jam,syrup,juicy,candy`};
+const el={country:$('#country'),varietal:$('#varietal'),process:$('#process'),flavor:$('#flavor')};
+const multi={varietal:1,flavor:1};
+let usage='Brewing';
+
+const mk=(g,v)=>{const b=document.createElement('button');b.className='chip';b.textContent=v;b.dataset.g=g;b.dataset.v=v;return b};
+for(const g in D){const c=$(`.chips[data-g=${g}]`);D[g].split(',').forEach(v=>c.append(mk(g,v)))}
+for(const k in FL){const h=document.createElement('div');h.className='cat';h.textContent=k;const c=document.createElement('div');c.className='chips';FL[k].split(',').forEach(v=>c.append(mk('flavor',v)));$('#flavors').append(h,c)}
+
+const list=g=>el[g].value.split(',').map(s=>s.trim()).filter(Boolean);
+const has=(a,v)=>a.some(s=>s.toLowerCase()===v.toLowerCase());
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.chip');if(!b)return;
+  const g=b.dataset.g,v=g==='flavor'?b.dataset.v.toUpperCase():b.dataset.v;
+  let a=list(g);const i=a.findIndex(s=>s.toLowerCase()===v.toLowerCase());
+  if(multi[g]){i<0?a.push(v):a.splice(i,1)}else a=i<0?[v]:[];
+  el[g].value=a.join(', ');sync();
 });
+document.querySelectorAll('.seg').forEach(b=>b.onclick=()=>setUsage(b.dataset.u));
+function setUsage(u){usage=u;document.querySelectorAll('.seg').forEach(b=>b.classList.toggle('on',b.dataset.u===u));draw()}
+document.querySelectorAll('input,textarea').forEach(i=>i.addEventListener('input',sync));
+
+function sync(){
+  document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',has(list(b.dataset.g),b.dataset.v)));
+  draw();
 }
-}catch(e){}
+
+// ---- 라벨 그리기 (800 x 1200, 2:3 = 400 x 600 비율) ----
+function wrap(x,t,cx,y,w,lh,dry){
+  let l='';
+  for(const s of t.split(/\s+/).filter(Boolean)){
+    const k=l?l+' '+s:s;
+    if(x.measureText(k).width>w&&l){if(!dry)x.fillText(l,cx,y);y+=lh;l=s}else l=k;
+  }
+  if(l){if(!dry)x.fillText(l,cx,y);y+=lh}
+  return y;
 }
-function save(){
-try{localStorage.setItem(KEY,JSON.stringify({sel:sel,lang:lang,cup:cup}));}catch(e){}
+// 영역에 들어가는 가장 큰 글자 크기를 찾아 줄 간격을 돌려줌
+function fit(x,t,w,wt,max,min,maxH,k){
+  let s=max;
+  for(;s>min;s-=2){x.font=wt+' '+s+'px '+F;if(wrap(x,t,0,0,w,s*k,1)<=maxH)break}
+  x.font=wt+' '+s+'px '+F;return s*k;
 }
-function T(zh,en){return lang==='zh'?zh:en;}
-function cname(d){return lang==='zh'?d.z:d.n;}
-function tname(t){return lang==='zh'?t.z:t.e;}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
-function pt(r,a){var t=a*Math.PI/180;return [(CX+r*Math.sin(t)).toFixed(1),(CY-r*Math.cos(t)).toFixed(1)];}
-function sec(r0,r1,a0,a1){
-var p1=pt(r1,a0),p2=pt(r1,a1),p3=pt(r0,a1),p4=pt(r0,a0);
-return 'M'+p1+' A'+r1+' '+r1+' 0 0 1 '+p2+' L'+p3+' A'+r0+' '+r0+' 0 0 0 '+p4+' Z';
+function draw(){
+  const cv=$('#cv'),W=800,H=1200,x=cv.getContext('2d'),v=id=>$('#'+id).value.trim(),w=W-100;
+  cv.width=W;cv.height=H;
+  x.fillStyle='#f7f0e6';x.fillRect(0,0,W,H);
+  // 로고 (크기 그대로)
+  x.fillStyle='#2b2522';x.fillRect(0,0,W,180);
+  x.textAlign='center';x.fillStyle='#fff';x.font='700 68px '+F;x.fillText('SOWON',W/2,100);
+  x.fillStyle='#d9c9b8';x.font='500 22px '+F;x.fillText('C  O  F  F  E  E',W/2,148);
+  // 본문 (모두 키움)
+  x.fillStyle='#c1803d';x.font='700 44px '+F;x.fillText(v('country').toUpperCase(),W/2,290);
+  x.fillStyle='#2b2522';
+  let lh=fit(x,v('name'),w,800,100,56,230,1.15);
+  let y=wrap(x,v('name'),W/2,395,w,lh);
+  const sub=[v('varietal'),v('process')].filter(Boolean).join('  ·  ');
+  x.fillStyle='#6b5a4b';lh=fit(x,sub,w,600,44,30,110,1.3);
+  y=wrap(x,sub,W/2,y+12,w,lh);
+  x.fillStyle='#c1803d';x.fillRect(W/2-45,y+6,90,5);
+  x.fillStyle='#2b2522';
+  const fy=y+100;
+  lh=fit(x,v('flavor'),w,800,64,34,925-fy,1.35);
+  wrap(x,v('flavor'),W/2,fy,w,lh);
+  // 하단 정보 2x2
+  x.fillStyle='#2b2522';x.fillRect(0,940,W,260);
+  const I=[['ALTITUDE',v('alt')?v('alt')+' m':'-'],['USAGE',usage],['ROASTED',v('date').replace(/-/g,'.')||'-'],['COLOR',v('color')||'-']];
+  I.forEach((p,i)=>{
+    const cx=200+(i%2)*400,ry=i<2?0:120;
+    x.fillStyle='#c1803d';x.font='700 24px '+F;x.fillText(p[0],cx,998+ry);
+    x.fillStyle='#fff';x.font='700 44px '+F;x.fillText(p[1],cx,1055+ry);
+  });
 }
-function wheel(ex){
-var A=ex?null:act;
-var ink=ex?'#1D2321':'var(--ink)',mut=ex?'#5F6A66':'var(--mut)',bg=ex?'#FFFFFF':'var(--bg)';
-var s='',a=0;
-CATS.forEach(function(d,ci){
-var n=d.t.length,a0=a,a1=a+n*4;
-var op=ex?0.55:(A===null?0.6:(A===ci?0.95:0.22));
-s+='<path data-c="'+ci+'" d="'+sec(44,76,a0+0.5,a1-0.5)+'" style="fill:'+d.c+';fill-opacity:'+op+';stroke:'+bg+';stroke-width:1.2"/>';
-d.t.forEach(function(t,ti){
-var on=sel.indexOf(ci+':'+ti)>=0;
-var so=on?1:(ex?0.16:(A===ci?0.62:0.2));
-s+='<path data-c="'+ci+'" d="'+sec(80,on?126:120,a0+ti*4,a0+ti*4+4)+'" style="fill:'+d.c+';fill-opacity:'+so+';stroke:'+bg+';stroke-width:0.8"/>';
-});
-var m=a0+n*2,lp=pt(136,m);
-var anc=(m>10&&m<170)?'start':((m>190&&m<350)?'end':'middle');
-s+='<text data-c="'+ci+'" x="'+lp[0]+'" y="'+lp[1]+'" text-anchor="'+anc+'" dominant-baseline="central" style="font-size:12px;font-weight:'+(A===ci?600:400)+';fill:'+(A===ci?ink:mut)+'">'+esc(cname(d))+'</text>';
-a=a1;
-});
-if(A!==null){
-s+='<text x="'+CX+'" y="'+CY+'" text-anchor="middle" dominant-baseline="central" style="font-size:14px;font-weight:600;fill:'+ink+'">'+esc(cname(CATS[A]))+'</text>';
+
+// ---- 이미지 저장: 공유 시트 → 이미지 저장 = 사진 앱에 바로 저장 ----
+async function saveToPhotos(){
+  const cv=$('#cv');draw();
+  const blob=await new Promise(r=>cv.toBlob(r,'image/png'));
+  const name=(($('#name').value.trim()||'sowon-label').replace(/[\\/:*?"<>|]/g,'')||'sowon-label');
+  const file=new File([blob],name+'.png',{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file]});return}
+    catch(e){if(e.name==='AbortError')return}
+  }
+  const url=URL.createObjectURL(blob);
+  if(/iPhone|iPad|iPod/.test(navigator.userAgent)){
+    const o=document.createElement('div');
+    o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;padding:20px;text-align:center';
+    o.innerHTML='<img src="'+url+'" style="max-width:88%;max-height:68%;border-radius:8px"><div>이미지를 길게 눌러 사진에 추가를 선택하세요</div><button class="btn sec" style="padding:12px 28px;font-size:16px">닫기</button>';
+    o.querySelector('button').onclick=()=>o.remove();
+    document.body.append(o);
+  }else{
+    const a=document.createElement('a');a.href=url;a.download=name+'.png';a.click();
+  }
 }
-return s;
+$('#png').onclick=saveToPhotos;
+
+// ---- 저장 목록 ----
+const K='sowon_labels',IDS=['country','name','varietal','process','alt','flavor','date','color'];
+const load=()=>{try{return JSON.parse(localStorage.getItem(K))||[]}catch(e){return[]}};
+const store=a=>{try{localStorage.setItem(K,JSON.stringify(a))}catch(e){toast('저장 공간을 사용할 수 없어요')}};
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
+$('#keep').onclick=()=>{const o={id:Date.now(),usage};IDS.forEach(i=>o[i]=$('#'+i).value);store([o,...load()]);toast('저장 목록에 담았어요')};
+function renderList(){
+  const a=load(),box=$('#list');box.innerHTML='';
+  if(!a.length){box.innerHTML='<p class="hint" style="margin-top:30px">저장된 라벨이 없습니다. 라벨 편집에서 저장 목록에 담아보세요.</p>';return}
+  a.forEach(o=>{
+    const d=document.createElement('div');d.className='card';
+    d.innerHTML='<div><b></b><small></small></div><button>불러오기</button><button>삭제</button>';
+    d.querySelector('b').textContent=o.name||'(이름 없음)';
+    d.querySelector('small').textContent=[o.country,o.date&&o.date.replace(/-/g,'.')].filter(Boolean).join(' · ');
+    const [lo,de]=d.querySelectorAll('button');
+    lo.onclick=()=>{IDS.forEach(i=>$('#'+i).value=o[i]||'');setUsage(o.usage||'Brewing');tab('edit');sync()};
+    de.onclick=()=>{store(load().filter(z=>z.id!==o.id));renderList()};
+    box.append(d);
+  });
 }
-function chipHtml(ci,ti,inTray){
-var d=CATS[ci],t=d.t[ti],on=sel.indexOf(ci+':'+ti)>=0;
-var sub=(!inTray&&lang==='en')?'<small>'+esc(t.z)+'</small>':'';
-return '<button type="button" class="chip'+(on?' on':'')+'" data-t="'+ci+':'+ti+'" aria-pressed="'+(on?'true':'false')+'" style="border-color:'+d.c+';background:'+d.c+(on?'66':'1f')+'">'+esc(tname(t))+sub+'</button>';
+function tab(t){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  $('#edit').hidden=t!=='edit';$('#list').hidden=t!=='list';$('#bar').hidden=t!=='edit';
+  if(t==='list')renderList();
+  scrollTo(0,0);
 }
-function render(){
-document.getElementById('wheel').innerHTML='<svg viewBox="0 0 400 340" role="img" aria-label="'+T('风味轮','Flavor wheel')+'">'+wheel(false)+'</svg>';
-var p='';
-CATS.forEach(function(d,i){
-p+='<button type="button" class="pill'+(act===i?' on':'')+'" data-c="'+i+'" aria-pressed="'+(act===i?'true':'false')+'"><i style="background:'+d.c+'"></i>'+esc(cname(d))+'</button>';
-});
-document.getElementById('pills').innerHTML=p;
-var h='';
-if(act===null){
-h='<h2>'+T('风味','Notes')+'</h2><p class="hint">'+T('点击分类查看风味，再点你尝到的风味进行选择。','Tap a category, then tap the notes you taste.')+'</p>';
-}else{
-var d=CATS[act];
-h='<h2>'+esc(cname(d))+'</h2><div class="chips">';
-d.t.forEach(function(t,ti){h+=chipHtml(act,ti,false);});
-h+='</div>';
-}
-document.getElementById('panel').innerHTML=h;
-document.getElementById('th').textContent=T('我选的风味','My notes');
-var tr='';
-if(!sel.length){tr='<p class="hint">'+T('选中的风味会显示在这里。','Selected notes will appear here.')+'</p>';}
-else{tr='<div class="chips">';sel.forEach(function(k){var q=k.split(':');tr+=chipHtml(+q[0],+q[1],true);});tr+='</div>';}
-document.getElementById('tray').innerHTML=tr;
-document.getElementById('bcopy').textContent=T('复制文字','Copy text');
-document.getElementById('bimg').textContent=T('保存图片','Save image');
-document.getElementById('bclr').textContent=T('重置','Clear');
-document.getElementById('bcopy').disabled=!sel.length;
-document.getElementById('bimg').disabled=!sel.length;
-document.getElementById('bclr').disabled=!(sel.length||cup);
-var ci=document.getElementById('cup');
-if(ci.value!==cup)ci.value=cup;
-ci.placeholder=T('杯子名称（例如：埃塞俄比亚 格德奥 水洗）','Cup name (e.g. Ethiopia Gedeb Washed)');
-ci.setAttribute('aria-label',T('杯子名称','Cup name'));
-document.querySelectorAll('[data-l]').forEach(function(b){var on=b.getAttribute('data-l')===lang;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});
-document.documentElement.lang=lang==='zh'?'zh-CN':'en';
-save();
-}
-function summary(){
-var out=[];
-CATS.forEach(function(d,ci){
-var n=[];
-sel.forEach(function(k){var p=k.split(':');if(+p[0]===ci)n.push(tname(d.t[p[1]]));});
-if(n.length)out.push(cname(d)+(lang==='zh'?'：':': ')+n.join(lang==='zh'?'、':', '));
-});
-return out;
-}
-function toast(m){
-var el=document.getElementById('toast');
-el.textContent=m;
-clearTimeout(timer);
-timer=setTimeout(function(){el.textContent='';},2200);
-}
-function fallbackCopy(tx){
-var a=document.createElement('textarea');
-a.value=tx;a.style.position='fixed';a.style.opacity='0';
-document.body.appendChild(a);a.select();
-var ok=false;
-try{ok=document.execCommand('copy');}catch(e){}
-document.body.removeChild(a);
-toast(ok?T('已复制','Copied'):T('复制失败','Copy failed'));
-}
-function copyText(){
-var tx=(cup?cup+'\n':'')+summary().join('\n');
-if(!sel.length)return;
-if(navigator.clipboard&&navigator.clipboard.writeText){
-navigator.clipboard.writeText(tx).then(function(){toast(T('已复制','Copied'));},function(){fallbackCopy(tx);});
-}else{fallbackCopy(tx);}
-}
-function wrapLine(s,max){
-var sep=lang==='zh'?'、':', ';
-var parts=s.split(sep),lines=[],cur='';
-parts.forEach(function(p){
-var nx=cur?cur+sep+p:p;
-if(nx.length>max&&cur){lines.push(cur+sep.trim());cur=p;}else{cur=nx;}
-});
-if(cur)lines.push(cur);
-return lines;
-}
-function exportImage(){
-if(!sel.length)return;
-var W=720,top=96,wh=612,max=lang==='zh'?28:50;
-var rows=[];
-summary().forEach(function(l){wrapLine(l,max).forEach(function(x,i){rows.push({t:x,ind:i>0});});});
-var H=top+wh+24+rows.length*36+40;
-var d=new Date();
-var ds=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
-var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" font-family=\''+FONT.replace(/"/g,'')+'\'>';
-svg+='<rect width="'+W+'" height="'+H+'" fill="#FFFFFF"/>';
-var ts=Math.max(16,Math.min(30,Math.floor(640/Math.max(cup.length,1))));
-svg+='<text x="40" y="50" font-size="'+ts+'" font-weight="600" fill="#1D2321">'+esc(cup||T('风味轮','Flavor wheel'))+'</text>';
-svg+='<text x="40" y="80" font-size="18" fill="#5F6A66">'+ds+'</text>';
-svg+='<g transform="translate(0,'+top+') scale(1.8)">'+wheel(true)+'</g>';
-rows.forEach(function(r,i){
-svg+='<text x="'+(r.ind?64:40)+'" y="'+(top+wh+30+i*36)+'" font-size="22" fill="#1D2321">'+esc(r.t)+'</text>';
-});
-svg+='</svg>';
-var img=new Image();
-img.onload=function(){
-var cv=document.createElement('canvas');
-cv.width=W*2;cv.height=H*2;
-var cx=cv.getContext('2d');
-cx.scale(2,2);
-cx.drawImage(img,0,0,W,H);
-cv.toBlob(function(b){
-if(!b){toast(T('无法生成图片','Could not create image'));return;}
-var f=null;
-try{f=new File([b],'flavor-wheel.png',{type:'image/png'});}catch(e){}
-if(f&&navigator.canShare&&navigator.canShare({files:[f]})){
-navigator.share({files:[f]}).catch(function(){});
-}else{
-var u=URL.createObjectURL(b);
-var a=document.createElement('a');
-a.href=u;a.download='flavor-wheel.png';
-document.body.appendChild(a);a.click();document.body.removeChild(a);
-setTimeout(function(){URL.revokeObjectURL(u);},4000);
-toast(T('图片已保存','Image saved'));
-}
-},'image/png');
-};
-img.onerror=function(){toast(T('无法生成图片','Could not create image'));};
-img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-}
-document.addEventListener('click',function(e){
-var el=e.target.closest('[data-t],[data-c],[data-l],[data-a]');
-if(!el)return;
-var v;
-if((v=el.getAttribute('data-t'))!==null){
-var i=sel.indexOf(v);
-if(i>=0)sel.splice(i,1);else sel.push(v);
-render();
-}else if((v=el.getAttribute('data-c'))!==null){
-var c=+v;
-act=(act===c)?null:c;
-render();
-}else if((v=el.getAttribute('data-l'))!==null){
-lang=v;
-render();
-}else if((v=el.getAttribute('data-a'))!==null){
-if(v==='copy')copyText();
-else if(v==='img')exportImage();
-else if(v==='clr'){
-if((sel.length||cup)&&window.confirm(T('清除杯子名称和所有已选风味吗？','Clear the cup name and all selected notes?'))){sel=[];cup='';render();}
-}
-}
-});
-document.getElementById('cup').addEventListener('input',function(e){cup=e.target.value.slice(0,40);render();});
-load();
-render();
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>tab(b.dataset.t));
+
+// 시작: 오늘 날짜
+const n=new Date(),p=z=>String(z).padStart(2,'0');
+$('#date').value=n.getFullYear()+'-'+p(n.getMonth()+1)+'-'+p(n.getDate());
+sync();
 </script>
 </body>
 </html>
